@@ -1,14 +1,15 @@
 class Player {
     constructor() {
-        this.pos = new p5.Vector(300,300)
-        this.height = 50
-        this.width = 50 
+        this.pos = new p5.Vector(300,300) // starts in the middle of the screen
+        this.height = 80
+        this.width = 80 
        
 
         this.v
         //this.acceleration
         this.angle = 0
         //this.reach = 1
+
 
         
     }

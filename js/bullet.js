@@ -1,26 +1,23 @@
 class Bullet {
 
-    constructor() {
-        this.pos = new p5.Vector(300,300)    
+    constructor(v) {
+        this.pos = new p5.Vector(v.x,v.y)    
         this.direction  // vector
         this.speed = 5
         this.r = 10
         this.move = new p5.Vector(0,0) // vector of the movement
-        this.moveY = 0 
-        this.x = 0
-        this.y = 0
+      
         this.angle = 0.0
+        this.v // vector of the player
        
     }
 
     draw(){       
         angleMode(DEGREES) 
 
-
         this.direction = createVector(mouseX - (this.pos.x ),  mouseY - (this.pos.y )) 
         this.direction.setMag(this.speed)
         this.angle = this.direction.heading()
-
 
         
        // this.velocity = createVector(dx, dy) 
@@ -33,61 +30,24 @@ class Bullet {
        circle (this.pos.x ,this.pos.y, this.r )
 
 
-        angleMode(DEGREES) 
+        //to mimic player movement below
        
-        let dx =  mouseX - (this.pos.x )
-        let dy =  mouseY - (this.pos.y )
         
-        this.v = createVector(dx, dy) 
+        this.v = createVector(mouseX - (this.pos.x ),  mouseY - (this.pos.y )) 
         this.angle = this.v.heading()  // for player direction
         
           this.acceleration = createVector(mouseX , mouseY ).setMag(0.1)  // for the player movement
           this.v.add(this.acceleration)  // for the player movement 
-          this.v.setMag(1)     // for the player movement
-           
-           this.pos.add(this.v) // fot the player moevement
+          this.v.setMag(1)     // for the player movement          
+          this.pos.add(this.v) // fot the player moevement
 
-        push()
-        translate (this.pos.x, this.pos.y)
-        
-       // fill (255,255,255)
-       // circle (this.pos.x ,this.pos.y, this.r )
-     
-        pop()
-              
+       
         
     }   
 
-    shut() {
-
-        //console.log(this.angle)
-        //console.log(this.direction)
-        //this.direction = p5.Vector.fromAngle(radians(this.angles))
-        //this.direction = p5.Vector.formAngle(this.angle)
-        this.move.add(this.direction) //.mult(this.speed)
-        // }
-
-        // if ((this.angle ) >= 0 &&  (this.angle ) <= 90 ) {
-        //     this.move.add(this.direction) 
-        // }
-        // if ( (this.angle) > 90 &&  (this.angle ) <= 180  ) {
-        //     this.moveY ++
-        //     this.moveX --
-        // }
-        // if ((this.angle) > 180 &&  (this.angle ) <= 270  ) {
-        //     this.moveY --
-        //     this.moveX --
-        // }
-        // if ((this.angle ) > 270 &&  (this.angle ) < 360  ) {
-        //     this.moveY --
-        //     this.moveX ++
-        // } if ((this.angle ) === 0) {
-        //     this.moveX = 0;
-        //     this.moveY = -6
-        // }   
-        
-       
-        
+    shut() {       
+        this.move.add(this.direction) //.mult(this.speed)      
+            
        
     }
 
