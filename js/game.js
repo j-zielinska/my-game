@@ -1,8 +1,10 @@
 class Game  {
     constructor() {
-        this.background = new Background ()
+        this.background = new Background()
+       
         this.player = new Player()
-        this.player2 = new Player2()
+        this.bullet= new Bullet()
+
         this.backgroundImg        
         this.playerImg 
     }
@@ -15,8 +17,17 @@ class Game  {
     }
     draw() {
         clear ()
-        this.background.draw()
+        this.background.draw() 
+        
         this.player.draw()
-        this.player2.draw()
+        this.bullet.draw()     
+             
+        
     }
+
+
+
+
+   
+
 }

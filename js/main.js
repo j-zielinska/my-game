@@ -14,11 +14,9 @@ function draw() {
 
 }
 
-// function keyPressed() {
-// 	if (keyCode === 32) {
-//        // if(0 < game.player.y <600 -50 &&  0 < game.player.x < 600 -50 ) {		
-        
-//         game.player.draw()
-//         //}
-// 	}
-//}
+function keyPressed() {
+    if (keyCode === 32) {
+        console.log('bullet')
+        game.bullet.shut()
+    }
+}
