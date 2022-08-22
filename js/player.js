@@ -9,6 +9,8 @@ class Player {
         //this.acceleration
         this.angle = 0
         //this.reach = 1
+
+        
     }
 
     draw() {    
@@ -18,13 +20,13 @@ class Player {
         let dy =  mouseY - (this.pos.y )
         
         this.v = createVector(dx, dy) 
+        this.angle = this.v.heading()  // for player direction
         
-        // this.acceleration = createVector(mouseX , mouseY ).setMag(0.1) 
-        // this.v.add(this.acceleration)
-        // this.v.setMag( 1)
-
-        
-        this.angle = this.v.heading()    
+           this.acceleration = createVector(mouseX , mouseY ).setMag(0.1)  // for the player movement
+           this.v.add(this.acceleration)  // for the player movement 
+           this.v.setMag(1)     // for the player movement
+           
+           this.pos.add(this.v) // fot the player moevement
 
         push()
         translate (this.pos.x, this.pos.y)
@@ -32,7 +34,8 @@ class Player {
         rotate(this.angle)  
         image(game.playerImg, -this.width/2 ,  -this.height/2, this.width , this.height)
        
-        pop()            
+        pop()
+              
        
 
       

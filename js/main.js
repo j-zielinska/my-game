@@ -10,12 +10,15 @@ function setup() {
 }
 
 function draw() {
+    
     game.draw()
 
 }
 
+
 function keyPressed() {
     if (keyCode === 32) {
+        
         console.log('bullet')
         game.bullet.shut()
     }

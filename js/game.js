@@ -3,7 +3,7 @@ class Game  {
         this.background = new Background()
        
         this.player = new Player()
-        this.bullet= new Bullet()
+        this.bullet= new Bullet() // how to connect position of the player to the bullet so the shut on bullet do not chane position of the player???
 
         this.backgroundImg        
         this.playerImg 
@@ -17,11 +17,12 @@ class Game  {
     }
     draw() {
         clear ()
-        this.background.draw() 
-        
+        this.background.draw()         
         this.player.draw()
-        this.bullet.draw()     
+        this.bullet.draw()  
+         
              
+
         
     }
 

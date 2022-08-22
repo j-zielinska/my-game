@@ -29,32 +29,8 @@ class Bullet {
         //this.x = this.pos.x  + this.move
         //this.y = this.pos.y  + this.moveY
         
-       fill (255,255,255)
-       circle (this.pos.x ,this.pos.y, this.r )
-
-
-        angleMode(DEGREES) 
-       
-        let dx =  mouseX - (this.pos.x )
-        let dy =  mouseY - (this.pos.y )
-        
-        this.v = createVector(dx, dy) 
-        this.angle = this.v.heading()  // for player direction
-        
-          this.acceleration = createVector(mouseX , mouseY ).setMag(0.1)  // for the player movement
-          this.v.add(this.acceleration)  // for the player movement 
-          this.v.setMag(1)     // for the player movement
-           
-           this.pos.add(this.v) // fot the player moevement
-
-        push()
-        translate (this.pos.x, this.pos.y)
-        
-       // fill (255,255,255)
-       // circle (this.pos.x ,this.pos.y, this.r )
-     
-        pop()
-              
+        fill (255,255,255)
+        circle (this.pos.x ,this.pos.y, this.r )
         
     }   
 
