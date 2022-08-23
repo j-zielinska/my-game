@@ -28,7 +28,8 @@ class Game  {
         this.bullets.forEach(function(bullet) {            
             bullet.draw()  
 
-        })        
+        }) 
+
         this.bullets = this.bullets.filter((bullet)=>{
             if (bullet.pos.x < 10 || bullet.pos.x > width -10 ) {
                 return false    
@@ -42,23 +43,53 @@ class Game  {
             else {
                 return true
             }
-        })   
+            
+        })         
 
-        if (frameCount % 90 === 0) {
-			this.obstacles.push(new Obstacle(this.obstacleImg))
+     
+        if (frameCount % 45 === 0) {
+			this.obstacles.push(new Obstacle(this.player))
 			
 		}
 		this.obstacles.forEach(function (obstacle) {
 			obstacle.draw()
 		})
+
+
+        this.obstacles = this.obstacles.filter((obstacle) => {
+            if (obstacle.hit(this.player)){
+                return false
+            }            
+            if (obstacle.pos.x < 0 - obstacle.size || obstacle.pos.x > 600 + obstacle.size || obstacle.pos.y < 0 - obstacle.size || obstacle.pos.y > 600 + obstacle.size) {
+                return false
+            }
+             else {                
+                return true
+            }
+        })
+
+        for (let i = this.obstacles.length -1 ; i >= 0; i--) {            
+            for (let j = this.bullets.length-1; j >= 0; j--){
+                this.bullets[j].draw() 
+                if (this.obstacles[i].shutdown(this.bullets[j])) {
+                    this.obstacles.splice(i, 1)
+                    this.bullets.splice(j,1)
+                    break                
+                  
+                } 
+            }
+        }       
+            
+            
+    }
+ }
         
 
         
-    }
+
 
 
 
 
    
 
-}

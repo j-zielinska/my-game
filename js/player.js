@@ -9,6 +9,7 @@ class Player {
         //this.acceleration
         this.angle = 0
         //this.reach = 1
+        this.life = 1000
 
 
         
@@ -25,7 +26,8 @@ class Player {
         
            this.acceleration = createVector(mouseX , mouseY ).setMag(0.1)  // for the player movement
            this.v.add(this.acceleration)  // for the player movement 
-           this.v.setMag(1)     // for the player movement
+           
+           this.v.setMag(2)     // for the player movement
            
            this.pos.add(this.v) // fot the player moevement
 
@@ -35,12 +37,10 @@ class Player {
         rotate(this.angle)  
         image(game.playerImg, -this.width/2 ,  -this.height/2, this.width , this.height)
        
-        pop()
-              
-       
-
-      
+        pop()        
+             
     }
+    
 
    
 

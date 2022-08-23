@@ -5,7 +5,7 @@ class Bullet {
         this.direction = new p5.Vector(0,0)
         this.currentX = x
         this.currentY = y
-        this.speed = 3
+        this.speed = 5
         this.r = 6
         //this.acc = new p5.Vector(0,0)
       
@@ -14,8 +14,7 @@ class Bullet {
        
     }
 
-    draw(){  
-                  
+    draw(){                    
        
         this.pos
   
@@ -30,7 +29,5 @@ class Bullet {
         this.direction = p5.Vector.fromAngle(radians(this.angle), this.speed)
         this.pos.add(this.direction)
     }   
-
-
-
+    
 }
