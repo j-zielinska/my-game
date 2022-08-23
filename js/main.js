@@ -20,6 +20,8 @@ function keyPressed() {
     if (keyCode === 32) {
         
         console.log('bullet')
-        game.bullet.shut()
-    }
+        game.bullets.forEach((bullet)=>{
+            bullet.shut()
+    })
+}
 }

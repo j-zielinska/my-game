@@ -39,16 +39,13 @@ class Bullet {
           this.acceleration = createVector(mouseX , mouseY ).setMag(0.1)  // for the player movement
           this.v.add(this.acceleration)  // for the player movement 
           this.v.setMag(1)     // for the player movement          
-          this.pos.add(this.v) // fot the player moevement
-
-       
+          this.pos.add(this.v) // fot the player moevement      
         
     }   
 
     shut() {       
-        this.move.add(this.direction) //.mult(this.speed)      
-            
-       
+        this.move.add(this.direction) //.mult(this.speed) 
+                     
     }
 
 

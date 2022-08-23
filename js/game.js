@@ -3,7 +3,7 @@ class Game  {
         this.background = new Background()
        
         this.player = new Player()
-        this.bullet= new Bullet(this.player.pos) //  should be an array ... how to connect position of the player to the bullet so the shut on bullet do not chane position of the player???
+        this.bullets = []  //  should be an array ... how to connect position of the player to the bullet so the shut on bullet do not chane position of the player???
         
         this.backgroundImg        
         this.playerImg 
@@ -19,8 +19,24 @@ class Game  {
         clear ()
         this.background.draw()         
         this.player.draw()
-        this.bullet.draw()         
-             
+        if (frameCount % 90 === 0) {
+            this.bullets.push(new Bullet(this.player.pos)) 
+        }
+        this.bullets.forEach(function(bullet) {            
+            bullet.draw()  
+
+        })        
+        this.bullets = this.bullets.filter((bullet)=>{
+            if (bullet.pos.x < 0 || bullet.pos.x > width ) {
+                return false    
+            }
+            if (bullet.pos.y < 0 || bullet.pos.y > height) {
+                return false      
+            } else {
+                return true
+            }
+        })   
+        
 
         
     }
