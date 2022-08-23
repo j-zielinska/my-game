@@ -17,11 +17,7 @@ function draw() {
 
 
 function keyPressed() {
-    if (keyCode === 32) {
-        
-        console.log('bullet')
-        game.bullets.forEach((bullet)=>{
-            bullet.shut()
-    })
-}
+    if (keyCode === 32) {        
+        game.bullets.push(new Bullet(game.player.pos, mouseX, mouseY))
+    }
 }

@@ -18,10 +18,8 @@ class Game  {
     draw() {
         clear ()
         this.background.draw()         
-        this.player.draw()
-        if (frameCount % 90 === 0) {
-            this.bullets.push(new Bullet(this.player.pos)) 
-        }
+        this.player.draw()     
+          
         this.bullets.forEach(function(bullet) {            
             bullet.draw()  
 
@@ -32,7 +30,11 @@ class Game  {
             }
             if (bullet.pos.y < 0 || bullet.pos.y > height) {
                 return false      
-            } else {
+            }   
+            if ( dist(bullet.pos.x, bullet.pos.y , bullet.currentX , bullet.currentY) < 10) {
+                return false 
+            }   
+            else {
                 return true
             }
         })   
