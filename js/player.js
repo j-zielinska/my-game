@@ -10,6 +10,7 @@ class Player {
         this.angle = 0
         //this.reach = 1
         this.life = 1000
+        this.score = 0
 
 
         
@@ -25,10 +26,8 @@ class Player {
         this.angle = this.v.heading()  // for player direction
         
            this.acceleration = createVector(mouseX , mouseY ).setMag(0.1)  // for the player movement
-           this.v.add(this.acceleration)  // for the player movement 
-           
-           this.v.setMag(2)     // for the player movement
-           
+           this.v.add(this.acceleration)  // for the player movement            
+           this.v.setMag(2)     // for the player movement           
            this.pos.add(this.v) // fot the player moevement
 
         push()

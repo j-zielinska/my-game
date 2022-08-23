@@ -1,19 +1,28 @@
 class Obstacle {
-    constructor(v) {
-                
-        this.pos = createVector(random(width), random(height))
-        if(this.pos === v) {
-            this.pos = createVector(random(width), random(height))
+    constructor(v, size) {
+               
+        this.vel = p5.Vector.random2D() 
+        if(v) {
+            this.pos = v      
+        } else {
+            this.pos = createVector(random(width), random(height))            
         }
-        this.size = (Math.floor(Math.random() * 3) + 6 )*10
-        this.vel = p5.Vector.random2D()
-        this.rotateAngle = 0.0        
+ 
+        if (size) {        
+        this.size = size
+        } else {
+            this.size = (Math.floor(Math.random() * 3) + 2 )*20
+        }        
+        
+        this.rotateAngle = 0.0     
+       // this.pos2 = createVector(mouseX,mouseY)
         
 
     }
 
     draw() {
 		this.rotateAngle += .5
+             
         this.pos.add(this.vel)
         push()
         translate(this.pos.x,this.pos.y)
@@ -47,12 +56,24 @@ class Obstacle {
 		let asteroidY = this.pos.y 	
 		let bulletX = bulletInfo.pos.x 
 		let bulletY = bulletInfo.pos.y 
-		if (dist(ateroidX, asteroidY, bulletX, bulletY) > 60) {
+		if (dist(ateroidX, asteroidY, bulletX, bulletY) > 30) {
 			return false
 		} else {
-			console.log('Hit!')            
+            
+        
+            game.player.score ++
+
+			console.log(game.player.score)            
 			return true
 		}
+    }
+
+    explode(v) {
+        let randomV1 = p5.Vector.random2D()
+        let newAsteroids = []
+        newAsteroids[0] = new Obstacle (v, 30)
+        newAsteroids[1] = new Obstacle (v, 50)
+        return newAsteroids
     }
 
     

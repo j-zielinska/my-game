@@ -7,10 +7,12 @@ function preload() {
 
 function setup() {
     createCanvas(600, 600)
+    strokeWeight(7);
+    noCursor();
 }
 
 function draw() {
-    
+    cursor(CROSS)
     game.draw()
 
 }

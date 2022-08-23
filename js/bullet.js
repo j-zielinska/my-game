@@ -6,7 +6,7 @@ class Bullet {
         this.currentX = x
         this.currentY = y
         this.speed = 5
-        this.r = 6
+        this.r = 3
         //this.acc = new p5.Vector(0,0)
       
         this.angle = 0.0
@@ -16,8 +16,7 @@ class Bullet {
 
     draw(){                    
        
-        this.pos
-  
+        
         push()
         translate (this.pos.x, this.pos.y)               
         fill (255,255,255)

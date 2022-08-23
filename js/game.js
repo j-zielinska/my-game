@@ -15,7 +15,8 @@ class Game  {
 
     preload () {
         this.backgroundImg = [
-            {src: loadImage('../assets/background/background-1.jpg')}
+            {src: loadImage('../assets/background/sky1.jpg')},
+            {src: loadImage('../assets/background/sky2.jpg')}
         ],
         this.playerImg = loadImage('../assets/player/Main Ship - Base - Full health.png')
         this.obstacleImg = loadImage('../assets/obstacles/asteroid.png')
@@ -48,7 +49,7 @@ class Game  {
 
      
         if (frameCount % 45 === 0) {
-			this.obstacles.push(new Obstacle(this.player))
+			this.obstacles.push(new Obstacle( ))
 			
 		}
 		this.obstacles.forEach(function (obstacle) {
@@ -72,6 +73,10 @@ class Game  {
             for (let j = this.bullets.length-1; j >= 0; j--){
                 this.bullets[j].draw() 
                 if (this.obstacles[i].shutdown(this.bullets[j])) {
+                    if (this.obstacles[i].size > 60) {
+                        let newA = this.obstacles[i].explode(this.obstacles[i].pos)
+                        this.obstacles = this.obstacles.concat(newA)
+                    }                    
                     this.obstacles.splice(i, 1)
                     this.bullets.splice(j,1)
                     break                
