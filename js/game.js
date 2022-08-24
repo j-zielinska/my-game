@@ -3,7 +3,7 @@ class Game  {
         this.background = new Background()
        
         this.player = new Player()
-        this.bullets = []  //  should be an array ... how to connect position of the player to the bullet so the shut on bullet do not chane position of the player???
+        this.bullets = []  
         
 
         this.obstacles = []

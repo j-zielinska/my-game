@@ -44,7 +44,7 @@ class Obstacle {
 		} else {	
 			
 			game.player.life -= 100
-			console.log(game.player.life)
+			//console.log(game.player.life)
             
 			return true
 		}
@@ -63,13 +63,13 @@ class Obstacle {
         
             game.player.score ++
 
-			console.log(game.player.score)            
+			//console.log(game.player.score)            
 			return true
 		}
     }
 
     explode(v) {
-        let randomV1 = p5.Vector.random2D()
+        
         let newAsteroids = []
         newAsteroids[0] = new Obstacle (v, 30)
         newAsteroids[1] = new Obstacle (v, 50)
