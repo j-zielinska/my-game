@@ -1,4 +1,5 @@
 class Game  {
+
     constructor() {
         this.background = new Background()
        
@@ -7,6 +8,7 @@ class Game  {
         
 
         this.obstacles = []
+        this.aliens = []
 
         this.lifeScore = new LifeScore()
 
@@ -14,6 +16,7 @@ class Game  {
         this.backgroundImg        
         this.playerImg 
         this.obstacleImg
+        this.alienImg
     }
 
     preload () {
@@ -23,14 +26,13 @@ class Game  {
         ],
         this.playerImg = loadImage('../assets/player/Main Ship - Base - Full health.png')
         this.obstacleImg = loadImage('../assets/obstacles/asteroid.png')
+        this.alienImg = loadImage('../assets/alien/Vp3M.gif')
     }
     draw() {
         clear ()
         this.background.draw()         
-        this.player.draw()    
-        this.lifeScore.draw() 
-        
-          
+        this.player.draw()             
+        this.lifeScore.draw()      
         this.bullets.forEach(function(bullet) {            
             bullet.draw()  
 
@@ -48,19 +50,16 @@ class Game  {
             }   
             else {
                 return true
-            }
-            
-        })         
+            }            
+        })   
 
-     
-        if (frameCount % 45 === 0) {
+        if (frameCount % 60 === 0) {
 			this.obstacles.push(new Obstacle( ))
 			
 		}
 		this.obstacles.forEach(function (obstacle) {
 			obstacle.draw()
 		})
-
 
         this.obstacles = this.obstacles.filter((obstacle) => {
             if (obstacle.hit(this.player)){
@@ -69,9 +68,7 @@ class Game  {
             }            
             if (obstacle.pos.x < 0 - obstacle.size || obstacle.pos.x > 600 + obstacle.size || obstacle.pos.y < 0 - obstacle.size || obstacle.pos.y > 600 + obstacle.size) {
                 return false
-            }
-             else {
-                                
+            } else {                                
                 return true
             }
         })
@@ -87,13 +84,49 @@ class Game  {
                     this.lifeScore.addPoint()                    
                     this.obstacles.splice(i, 1)
                     this.bullets.splice(j,1)
-                    break                
-                  
+                    break              
                 } 
             }
-        }     
+        }  
         
-                    
+        if (game.player.score > 8) {         
+            if (frameCount % 180 === 0) {
+			    this.aliens.push(new Alien( ))                                 	
+            }	
+		}
+
+        this.aliens.forEach(function (alien) {
+			alien.draw()            
+		})
+
+        this.aliens = this.aliens.filter((alien) => {
+            if (alien.hit(this.player)){
+                this.lifeScore.reduceLife()
+                this.lifeScore.reduceLife()
+                //console.log(this.player.life)
+                return false
+            } else {                                
+                return true
+            }
+        })
+
+        for (let i = this.aliens.length -1 ; i >= 0; i--) {            
+            for (let j = this.bullets.length-1; j >= 0; j--){
+                this.bullets[j].draw() 
+                if (this.aliens[i].shutdown(this.bullets[j])) {
+                    if (this.aliens[i].size > 60) {
+                        let newA = this.aliens[i].explode(this.aliens[i].pos)
+                        this.aliens = this.obstacles.concat(newA)
+                    }
+                    this.lifeScore.addPoint()   
+                    this.lifeScore.addPoint()                   
+                    this.aliens.splice(i, 1)
+                    this.bullets.splice(j,1)
+                    break              
+                } 
+            }
+        }  
+          
             
     }
  }

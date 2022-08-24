@@ -4,11 +4,8 @@ let gameStart = 0
 const game = new Game()
 
 
-
 function preload() {
-
     game.preload()
-
 }
 
 function setup() {
@@ -28,17 +25,21 @@ function draw() {
         textSize(15)
         text ('Press E N T E R to start', 0, 300, width)
     }
+
     if (gameStart ===1) {
         cursor(CROSS)
          game.draw()
-    }
+    }    
 
     if (gameStart ===1 && game.player.score >= 30) {
         game.background.draw()
         textSize(40)
+        strokeWeight(0)
         fill (255,255,255,127)
         textAlign(CENTER, TOP)
         text ('you WON', 0, 250, width)
+        textSize(15)
+        text ('Press E N T E R to play again', 0, 300, width)
     }
 
     if (gameStart ===1 && game.player.life <= 0) {
@@ -47,9 +48,9 @@ function draw() {
         fill (255,255,255,127)
         textAlign(CENTER, TOP)
         text ('you DIED', 0, 250, width)
-    }
-    
-
+        textSize(15)
+        text ('Press E N T E R to play again', 0, 300, width)
+    }  
 }
 
 
@@ -59,6 +60,14 @@ function keyPressed() {
     }
     if (keyCode === 13){
         gameStart = 1
+        game.player.score = 0
+        game.lifeScore.scores = 0
+        game.player.life = 1000
+        game.lifeScore.lifeW = game.lifeScore.width - 5
+        //game.lifeScore.lifeW -= 0
+        game.lifeScore.scoreW = 0
+        game.aliens = []
+        game.obstacles = []
     }
 }
 
