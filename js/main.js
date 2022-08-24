@@ -26,7 +26,7 @@ function draw() {
         text ('Press E N T E R to start', 0, 300, width)
     }
 
-    if (gameStart ===1) {
+    if (gameStart ===1 && game.player.score < 30 && game.player.life > 0)  {
         cursor(CROSS)
          game.draw()
     }    
@@ -45,6 +45,7 @@ function draw() {
     if (gameStart ===1 && game.player.life <= 0) {
         game.background.draw()
         textSize(40)
+        strokeWeight(0)
         fill (255,255,255,127)
         textAlign(CENTER, TOP)
         text ('you DIED', 0, 250, width)

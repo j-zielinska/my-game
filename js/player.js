@@ -19,7 +19,7 @@ class Player {
     draw() {    
         angleMode(DEGREES) 
 
-        if (dist(this.pos.x, this.pos.y, mouseX, mouseY) > .5){
+        if (dist(this.pos.x, this.pos.y, mouseX, mouseY) > 1){
             let dx =  mouseX - (this.pos.x )
             let dy =  mouseY - (this.pos.y )
             this.v = createVector(dx, dy) 
