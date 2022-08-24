@@ -7,6 +7,9 @@ class Game  {
         
 
         this.obstacles = []
+
+        this.lifeScore = new LifeScore()
+
         
         this.backgroundImg        
         this.playerImg 
@@ -24,7 +27,9 @@ class Game  {
     draw() {
         clear ()
         this.background.draw()         
-        this.player.draw()     
+        this.player.draw()    
+        this.lifeScore.draw() 
+        
           
         this.bullets.forEach(function(bullet) {            
             bullet.draw()  
@@ -59,12 +64,14 @@ class Game  {
 
         this.obstacles = this.obstacles.filter((obstacle) => {
             if (obstacle.hit(this.player)){
+                this.lifeScore.reduceLife()
                 return false
             }            
             if (obstacle.pos.x < 0 - obstacle.size || obstacle.pos.x > 600 + obstacle.size || obstacle.pos.y < 0 - obstacle.size || obstacle.pos.y > 600 + obstacle.size) {
                 return false
             }
-             else {                
+             else {
+                                
                 return true
             }
         })
@@ -76,15 +83,17 @@ class Game  {
                     if (this.obstacles[i].size > 60) {
                         let newA = this.obstacles[i].explode(this.obstacles[i].pos)
                         this.obstacles = this.obstacles.concat(newA)
-                    }                    
+                    }
+                    this.lifeScore.addPoint()                    
                     this.obstacles.splice(i, 1)
                     this.bullets.splice(j,1)
                     break                
                   
                 } 
             }
-        }       
-            
+        }     
+        
+                    
             
     }
  }
