@@ -27,19 +27,19 @@ class Game  {
 
     preload () {
         this.backgroundImg = [
-            {src: loadImage('../assets/background/sky1.jpg')},
-            {src: loadImage('../assets/background/sky2.jpg')}
+            {src: loadImage('./assets/background/sky1.jpg')},
+            {src: loadImage('./assets/background/sky2.jpg')}
         ],
-        this.playerImg = loadImage('../assets/player/Main Ship - Base - Full health.png')
-        this.obstacleImg = loadImage('../assets/obstacles/asteroid.png')
-        this.alienImg = loadImage('../assets/alien/Vp3M.gif')
+        this.playerImg = loadImage('./assets/player/Main Ship - Base - Full health.png')
+        this.obstacleImg = loadImage('./assets/obstacles/asteroid.png')
+        this.alienImg = loadImage('./assets/alien/Vp3M.gif')
 
         soundFormats('mp3', 'ogg')
-        this.sound = loadSound('../assets/sounds/spaceship-cruising-ufo-7176.mp3')
+        this.sound = loadSound('./assets/sounds/spaceship-cruising-ufo-7176.mp3')
         this.sound.setVolume(.3)
-        this.explosionSound = loadSound ('../assets/sounds/mixkit-electronic-retro-block-hit-2185.wav')
-        this.bulletSound = loadSound ('../assets/sounds/mixkit-video-game-magic-item-unlock-2349.wav')
-        this.alienSound = loadSound	('../assets/sounds/mixkit-creature-cry-of-hurt-2208.wav')
+        this.explosionSound = loadSound ('./assets/sounds/mixkit-electronic-retro-block-hit-2185.wav')
+        this.bulletSound = loadSound ('./assets/sounds/mixkit-video-game-magic-item-unlock-2349.wav')
+        this.alienSound = loadSound	('./assets/sounds/mixkit-creature-cry-of-hurt-2208.wav')
     
     }
     draw() {
