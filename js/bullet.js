@@ -6,10 +6,9 @@ class Bullet {
         this.currentX = x
         this.currentY = y
         this.speed = 5
-        this.r = 3
-        //this.acc = new p5.Vector(0,0)      
+        this.r = 3    
         this.angle = 0.0
-        this.v // vector of the player
+        this.v 
        
     }
 

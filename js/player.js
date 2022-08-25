@@ -1,12 +1,14 @@
 class Player {
     constructor() {
         this.pos = new p5.Vector(300,300)
-        this.height = 90
-        this.width = 90  
+        this.height = 70
+        this.width = 70  
         this.v
+
         this.angle = 0       
         this.life = 1000
-        this.score = 0        
+        this.score = 0   
+       
     }
 
     draw() {    
@@ -20,21 +22,16 @@ class Player {
             this.angle = this.v.heading()              
             this.v.setMag(2)             
             this.pos.add(this.v) 
-        }        
+        }
+            
         
 
         push()
         translate (this.pos.x, this.pos.y)        
         rotate(this.angle)  
-        image(game.playerImg, -this.width/2 ,  -this.height/2, this.width , this.height)
-       
-        pop()        
-             
+        image(game.playerImg, -this.width/2 ,  -this.height/2, this.width , this.height)             
+        pop()   
+     
     }
-
-    
-        
-
-    
 
 }

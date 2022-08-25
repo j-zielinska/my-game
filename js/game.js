@@ -1,9 +1,9 @@
 class Game  {
 
     constructor() {
-        this.background = new Background()
-       
-        this.player = new Player()
+        this.background = new Background()       
+        this.player = new Player() 
+        this.smokeElements = []
         this.bullets = []  
         
 
@@ -26,17 +26,14 @@ class Game  {
     }
 
     preload () {
-        this.backgroundImg = [
-            {src: loadImage('./assets/background/sky1.jpg')},
-            {src: loadImage('./assets/background/sky2.jpg')}
-        ],
-        this.playerImg = loadImage('./assets/player/Main Ship - Base - Full health.png')
+        this.backgroundImg =loadImage('./assets/background/sky1.jpg')
+            
+        this.playerImg = loadImage('./assets/player/Main Ship - Base - Full health.png ')
         this.obstacleImg = loadImage('./assets/obstacles/asteroid.png')
         this.alienImg = loadImage('./assets/alien/Vp3M.gif')
-
         soundFormats('mp3', 'ogg')
         this.sound = loadSound('./assets/sounds/spaceship-cruising-ufo-7176.mp3')
-        this.sound.setVolume(.3)
+        this.sound.setVolume(.5)
         this.explosionSound = loadSound ('./assets/sounds/mixkit-electronic-retro-block-hit-2185.wav')
         this.bulletSound = loadSound ('./assets/sounds/mixkit-video-game-magic-item-unlock-2349.wav')
         this.alienSound = loadSound	('./assets/sounds/mixkit-creature-cry-of-hurt-2208.wav')
@@ -45,7 +42,28 @@ class Game  {
     draw() {
         clear ()
         this.background.draw()         
-        this.player.draw()             
+        
+        if (frameCount % 5=== 0) {
+            this.smokeElements.push(new Smoke (this.player.pos))
+        }
+        
+        this.smokeElements.forEach(function(smoke){            
+            smoke.move()
+            smoke.draw()
+            
+        })
+
+        this.smokeElements = this.smokeElements.filter((smoke)=> {
+            if(smoke.transparency <= 0 ){
+                return false
+            } else {
+                return true
+            }           
+            
+        })
+
+        this.player.draw()  
+        
         this.lifeScore.draw()      
         this.bullets.forEach(function(bullet) {            
             bullet.draw()  
@@ -120,7 +138,6 @@ class Game  {
                 this.lifeScore.reduceLife()
                 this.lifeScore.reduceLife()
                 this.explosionSound.play()                
-                //console.log(this.player.life)
                 return false
             } else {                                
                 return true
