@@ -2,6 +2,7 @@ class Obstacle {
     constructor(v, size) {
                
         this.vel = p5.Vector.random2D() 
+        
         if(v) {
             this.pos = v      
         } else {
@@ -37,8 +38,7 @@ class Obstacle {
 		let playerY = playerInfo.pos.y + playerInfo.height / 2
 		if (dist(ateroidX, asteroidY, playerX, playerY) > 40) {
 			return false
-		} else {	
-			
+		} else {				
 			game.player.life -= 100
 			//console.log(game.player.life)            
 			return true
