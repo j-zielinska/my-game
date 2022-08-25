@@ -1,7 +1,7 @@
 class Obstacle {
     constructor(v, size) {
                
-        this.vel = p5.Vector.random2D() 
+        this.vel = p5.Vector.random2D()
         
         if(v) {
             this.pos = v      
@@ -14,7 +14,7 @@ class Obstacle {
             this.size = (Math.floor(Math.random() * 3) + 2 )*20
         }                
         this.rotateAngle = 0.0     
-       // this.pos2 = createVector(mouseX,mouseY)       
+          
 
     }
 
@@ -39,8 +39,7 @@ class Obstacle {
 		if (dist(ateroidX, asteroidY, playerX, playerY) > 40) {
 			return false
 		} else {				
-			game.player.life -= 100
-			//console.log(game.player.life)            
+			game.player.life -= 100          
 			return true
 		}
     }
@@ -54,8 +53,7 @@ class Obstacle {
 		if (dist(ateroidX, asteroidY, bulletX, bulletY) > 30) {
 			return false
 		} else {              
-           game.player.score ++
-			//console.log(game.player.score)            
+           game.player.score ++       
 			return true
 		}
     }

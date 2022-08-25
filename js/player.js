@@ -2,17 +2,11 @@ class Player {
     constructor() {
         this.pos = new p5.Vector(300,300)
         this.height = 90
-        this.width = 90   
-
+        this.width = 90  
         this.v
-        //this.acceleration
-        this.angle = 0
-       
+        this.angle = 0       
         this.life = 1000
-        this.score = 0
-
-
-        
+        this.score = 0        
     }
 
     draw() {    
@@ -24,12 +18,9 @@ class Player {
             this.v = createVector(dx, dy) 
 
             this.angle = this.v.heading()              
-            //this.acceleration = createVector(mouseX , mouseY ).setMag(1) 
-            //this.v.add(this.acceleration)            
             this.v.setMag(2)             
             this.pos.add(this.v) 
-        }
-            
+        }        
         
 
         push()

@@ -7,8 +7,7 @@ class Alien {
         } else  {
             this.y = Math.floor(Math.random()*100) 
         }
-        this.pos = new p5.Vector(this.x, this.y)
-        
+        this.pos = new p5.Vector(this.x, this.y)        
 
         this.width = 50
         this.hieght = 50
@@ -19,10 +18,9 @@ class Alien {
     draw (){
        
         let dx =  game.player.pos.x - (this.pos.x )
-        let dy =  game.player.pos.y - (this.pos.y )
-        
-        this.v = createVector(dx, dy) 
-            
+        let dy =  game.player.pos.y - (this.pos.y )   
+
+        this.v = createVector(dx, dy)             
 
         this.v.setMag(this.speed)            
         this.pos.add(this.v) 
