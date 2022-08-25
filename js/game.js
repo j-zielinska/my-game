@@ -17,6 +17,12 @@ class Game  {
         this.playerImg 
         this.obstacleImg
         this.alienImg
+        
+        this.sound
+        this.explosionSound
+        this.bulletSound
+        this.alienSound
+        
     }
 
     preload () {
@@ -27,6 +33,14 @@ class Game  {
         this.playerImg = loadImage('../assets/player/Main Ship - Base - Full health.png')
         this.obstacleImg = loadImage('../assets/obstacles/asteroid.png')
         this.alienImg = loadImage('../assets/alien/Vp3M.gif')
+
+        soundFormats('mp3', 'ogg')
+        this.sound = loadSound('../assets/sounds/spaceship-cruising-ufo-7176.mp3')
+        this.sound.setVolume(.3)
+        this.explosionSound = loadSound ('../assets/sounds/mixkit-electronic-retro-block-hit-2185.wav')
+        this.bulletSound = loadSound ('../assets/sounds/mixkit-video-game-magic-item-unlock-2349.wav')
+        this.alienSound = loadSound	('../assets/sounds/mixkit-creature-cry-of-hurt-2208.wav')
+    
     }
     draw() {
         clear ()
@@ -46,6 +60,7 @@ class Game  {
                 return false      
             }   
             if ( dist(bullet.pos.x, bullet.pos.y , bullet.currentX , bullet.currentY) < 10) {
+                
                 return false 
             }   
             else {
@@ -63,6 +78,7 @@ class Game  {
 
         this.obstacles = this.obstacles.filter((obstacle) => {
             if (obstacle.hit(this.player)){
+                this.explosionSound.play()
                 this.lifeScore.reduceLife()
                 return false
             }            
@@ -80,7 +96,7 @@ class Game  {
                     if (this.obstacles[i].size > 60) {
                         let newA = this.obstacles[i].explode(this.obstacles[i].pos)
                         this.obstacles = this.obstacles.concat(newA)
-                    }
+                    }                    
                     this.lifeScore.addPoint()                    
                     this.obstacles.splice(i, 1)
                     this.bullets.splice(j,1)
@@ -103,6 +119,7 @@ class Game  {
             if (alien.hit(this.player)){
                 this.lifeScore.reduceLife()
                 this.lifeScore.reduceLife()
+                this.explosionSound.play()                
                 //console.log(this.player.life)
                 return false
             } else {                                
@@ -118,6 +135,7 @@ class Game  {
                         let newA = this.aliens[i].explode(this.aliens[i].pos)
                         this.aliens = this.obstacles.concat(newA)
                     }
+                    this.alienSound.play()
                     this.lifeScore.addPoint()   
                     this.lifeScore.addPoint()                   
                     this.aliens.splice(i, 1)

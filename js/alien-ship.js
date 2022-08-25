@@ -39,7 +39,7 @@ class Alien {
     hit(playerInfo) {        
 		let playerX = playerInfo.pos.x + playerInfo.width / 2
 		let playerY = playerInfo.pos.y + playerInfo.height / 2
-		if (dist(this.pos.x + this.width / 2, this.pos.y + this.hieght / 2, playerX, playerY) > 40) {
+		if (dist(this.pos.x + this.width / 2, this.pos.y + this.hieght / 2, playerX, playerY) > 30) {
 			return false
 		} else {				
 			game.player.life -= 200         
@@ -51,7 +51,7 @@ class Alien {
    	
 		let bulletX = bulletInfo.pos.x 
 		let bulletY = bulletInfo.pos.y 
-		if (dist(this.pos.x + this.width / 2, this.pos.y + this.hieght / 2, bulletX, bulletY) > 15) {
+		if (dist(this.pos.x + this.width / 2, this.pos.y + this.hieght / 2, bulletX, bulletY) > 20) {
 			return false
 		} else {              
            game.player.score += 2			          

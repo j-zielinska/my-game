@@ -18,6 +18,7 @@ function setup() {
 function draw() {
     if (gameStart === 0 ) {          
         game.background.draw()
+        game.bulletSound.stop() 
         textSize(40)
         fill (255,255,255,127)
         textAlign(CENTER, TOP)
@@ -29,10 +30,13 @@ function draw() {
     if (gameStart ===1 && game.player.score < 30 && game.player.life > 0)  {
         cursor(CROSS)
          game.draw()
+         
     }    
 
     if (gameStart ===1 && game.player.score >= 30) {
         game.background.draw()
+        game.sound.stop() 
+        game.bulletSound.stop() 
         textSize(40)
         strokeWeight(0)
         fill (255,255,255,127)
@@ -44,6 +48,8 @@ function draw() {
 
     if (gameStart ===1 && game.player.life <= 0) {
         game.background.draw()
+        game.sound.stop() 
+        game.bulletSound.stop() 
         textSize(40)
         strokeWeight(0)
         fill (255,255,255,127)
@@ -59,8 +65,10 @@ function keyPressed() {
     if (keyCode === 32) {   
              
         game.bullets.push(new Bullet(game.player.pos, mouseX, mouseY))
+         game.bulletSound.play()  
     }
-    if (keyCode === 13){
+    if (keyCode === 13){ 
+        game.sound.play()       
         gameStart = 1
         game.player.score = 0
         game.lifeScore.scores = 0
