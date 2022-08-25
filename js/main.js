@@ -65,7 +65,6 @@ function keyPressed() {
         game.lifeScore.scores = 0
         game.player.life = 1000
         game.lifeScore.lifeW = game.lifeScore.width - 5
-        //game.lifeScore.lifeW -= 0
         game.lifeScore.scoreW = 0
         game.aliens = []
         game.obstacles = []
