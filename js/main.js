@@ -56,7 +56,8 @@ function draw() {
 
 
 function keyPressed() {
-    if (keyCode === 32) {        
+    if (keyCode === 32) {   
+             
         game.bullets.push(new Bullet(game.player.pos, mouseX, mouseY))
     }
     if (keyCode === 13){

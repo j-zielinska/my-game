@@ -44,3 +44,12 @@ function controls () {
 controls()
 
 informations()
+
+window.onkeydown = function(event){
+    if(event.keyCode === 32) {
+        event.preventDefault()
+    }
+    if(event.keyCode === ENTER) {
+        event.preventDefault()
+    }
+}
